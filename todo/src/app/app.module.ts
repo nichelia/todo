@@ -35,7 +35,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatIconModule,
     MatCheckboxModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     DragDropModule,
   ],
   providers: [],
