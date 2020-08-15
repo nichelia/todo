@@ -87,6 +87,7 @@ run_docker_dev_env()
     -v "${PWD}/${_PROJECT_NAME}":"/usr/src/todo/${_PROJECT_NAME}/" \
     -v "${DOCKER_DEV_VOLUME}":"/usr/src/todo/${_PROJECT_NAME}/node_modules" \
     -p 4200:4200 \
+    -p 9876:9876 \
     "${DOCKER_DEV_IMAGE_TAG}" "$@"
 }
 

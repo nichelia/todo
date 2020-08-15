@@ -7,6 +7,8 @@ import { VERSION } from '../environments/version';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'blm';
+  title = 'todo';
   version = "v"+VERSION.version;
+
+  constructor() { }
 }
