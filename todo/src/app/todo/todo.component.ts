@@ -11,6 +11,7 @@ import { Task } from './task';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
+  private maxDoneItems = 100;
   private focusedTasksCollection: AngularFirestoreCollection<Task>;
   private backlogTasksCollection: AngularFirestoreCollection<Task>;
   private doneTasksCollection: AngularFirestoreCollection<Task>;
@@ -34,11 +35,15 @@ export class TodoComponent implements OnInit {
   private setupDB()
   {
     this.focusedTasksCollection = this.firestore.collection<Task>('tasks',
-      ref => ref.where('isFocused', '==', true).orderBy('priority'));
+      ref => ref.where('isFocused', '==', true)
+                .orderBy('priority'));
     this.backlogTasksCollection = this.firestore.collection<Task>('tasks',
-      ref => ref.where('isFocused', '==', false).where('isDone', '==', false));
+      ref => ref.where('isFocused', '==', false)
+                .where('isDone', '==', false));
     this.doneTasksCollection = this.firestore.collection<Task>('tasks',
-      ref => ref.where('isDone', '==', true));
+      ref => ref.where('isDone', '==', true)
+                .orderBy('dateCompleted', 'desc')
+                .limit(this.maxDoneItems));
 
     this.focusedTasks = this.focusedTasksCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -86,11 +91,6 @@ export class TodoComponent implements OnInit {
     this.backlogTasksCollection.add({...task});
   }
 
-  private addDoneDocument(task: Task)
-  {
-    this.doneTasksCollection.add({...task});
-  }
-
   private updateDocument(task: Task)
   {
     const taskDoc = this.firestore.doc<Task>('tasks/'+task.id);
@@ -102,6 +102,7 @@ export class TodoComponent implements OnInit {
     task.priority = newIndex;
     task.isFocused = true;
     task.isDone = false;
+    task.dateCompleted = null;
     this.updateDocument(task);
   }
 
@@ -110,6 +111,7 @@ export class TodoComponent implements OnInit {
     task.priority = 0;
     task.isFocused = false;
     task.isDone = false;
+    task.dateCompleted = null;
     this.updateDocument(task);
   }
 
@@ -118,6 +120,7 @@ export class TodoComponent implements OnInit {
     task.priority = 0;
     task.isFocused = false;
     task.isDone = true;
+    task.dateCompleted = new Date();
     this.updateDocument(task);
   }
 
