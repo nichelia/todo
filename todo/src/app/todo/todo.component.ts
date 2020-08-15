@@ -97,6 +97,42 @@ export class TodoComponent implements OnInit {
     taskDoc.update(task);
   }
 
+  private changeToFocused(task: Task, newIndex: number)
+  {
+    task.priority = newIndex;
+    task.isFocused = true;
+    task.isDone = false;
+    this.updateDocument(task);
+  }
+
+  private changeToBacklog(task: Task)
+  {
+    task.priority = 0;
+    task.isFocused = false;
+    task.isDone = false;
+    this.updateDocument(task);
+  }
+
+  private changeToDone(task: Task)
+  {
+    task.priority = 0;
+    task.isFocused = false;
+    task.isDone = true;
+    this.updateDocument(task);
+  }
+
+  onDoneChange(event, task: Task)
+  {
+    if (event.checked)
+    {
+      this.changeToDone(task);
+    }
+    else
+    {
+      this.changeToBacklog(task);
+    }
+  }
+
   drop(event: CdkDragDrop<Task[]>)
   {
     if (event.previousContainer === event.container)
@@ -108,24 +144,15 @@ export class TodoComponent implements OnInit {
     {
       if (event.container.id === 'focused-list')
       {
-        event.item.data.priority = event.currentIndex;
-        event.item.data.isFocused = true;
-        event.item.data.isDone = false;
-        this.updateDocument(event.item.data);
+        this.changeToFocused(event.item.data, event.currentIndex);
       }
       if (event.container.id === 'backlog-list')
       {
-        event.item.data.priority = 0;
-        event.item.data.isFocused = false;
-        event.item.data.isDone = false;
-        this.updateDocument(event.item.data);
+        this.changeToBacklog(event.item.data);
       }
       if (event.container.id === 'done-list')
       {
-        event.item.data.priority = 0;
-        event.item.data.isFocused = false;
-        event.item.data.isDone = true;
-        this.updateDocument(event.item.data);
+        this.changeToDone(event.item.data);
       }
     }
   }
