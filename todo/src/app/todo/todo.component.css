@@ -1,6 +1,41 @@
-.container
+.mat-drawer-container
+{
+  height: 100%;
+  background-color: inherit;
+}
+
+.add-task-sidenav
+{
+  padding: 20px;
+  min-width: 200px;
+}
+
+.add-task-sidenav .card
+{
+  margin: 20px;
+  width: 100%;
+}
+
+.add-task-sidenav .add-task-form
+{
+  min-width: 150px;
+  max-width: 540px;
+  width: 100%;
+}
+
+.add-task-sidenav mat-form-field
+{
+  margin: 18px 0px;
+}
+
+.add-task-sidenav .input-full-width
 {
   width: 100%;
+}
+
+.container
+{
+  padding: 20px;
   height: 100%;
 }
 

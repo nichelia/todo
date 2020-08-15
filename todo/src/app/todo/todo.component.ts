@@ -18,6 +18,7 @@ export class TodoComponent implements OnInit {
   focusedTasks: Observable<Task[]>;
   backlogTasks: Observable<Task[]>;
   doneTasks: Observable<Task[]>;
+  showFiller = false;
 
   constructor(private firestore: AngularFirestore) { }
 

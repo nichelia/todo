@@ -1,7 +1,6 @@
 .container
 {
-  margin-top: 50px;
-  padding: 10px;
+  height: 100%;
 }
 
 #source-code-link

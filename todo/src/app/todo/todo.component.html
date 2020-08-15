@@ -1,68 +1,101 @@
-<div class="container" fxLayout="column" fxLayoutAlign="row center" fxFlexFill>
-  <div class="card">
-    <h2>Focused</h2>
-    <mat-accordion id="focused-list" class="list" cdkDropList #focusedList="cdkDropList" [cdkDropListData]="focusedTasks" [cdkDropListConnectedTo]="[backlogList, doneList]" (cdkDropListDropped)="drop($event)">
-      <ng-container *ngFor="let task of focusedTasks | async">
-        <mat-expansion-panel cdkDrag [cdkDragData]="task" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-checkbox color="primary" disableRipple="true"
-                [checked]="task.isDone"
-                (change)="onDoneChange($event, task)"
-                (click)="$event.stopPropagation()"
-                (keydown)="$event.stopPropagation()">
-                {{ task.title }}
-              </mat-checkbox>
-            </mat-panel-title>
-            <mat-panel-description>{{ task.category }}</mat-panel-description>
-          </mat-expansion-panel-header>
-          <p>{{ task.description }}</p>
-        </mat-expansion-panel>
-      </ng-container>
-    </mat-accordion>
+<mat-drawer-container autosize>
+  <mat-drawer #drawer class="add-task-sidenav" mode="side" position="end">
+    <div class="card">
+      <h2>Add task</h2>
+      <form class="add-task-form">
+        <mat-form-field class="input-full-width">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="e.g. Call Nicholas" value="">
+        </mat-form-field>
+        <mat-form-field class="input-full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="e.g. The phone number to call is..."></textarea>
+        </mat-form-field>
+        <mat-form-field class="input-full-width">
+          <mat-label>Category</mat-label>
+          <input matInput placeholder="e.g. Personal" value="">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Due date</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </form>
+    </div>
+  </mat-drawer>
+  <div class="container" fxLayout="column" fxLayoutAlign="row center" fxFlexFill>
+    <div class="card">
+      <h2>Focused</h2>
+      <mat-accordion id="focused-list" class="list" cdkDropList #focusedList="cdkDropList" [cdkDropListData]="focusedTasks" [cdkDropListConnectedTo]="[backlogList, doneList]" (cdkDropListDropped)="drop($event)">
+        <ng-container *ngFor="let task of focusedTasks | async">
+          <mat-expansion-panel cdkDrag [cdkDragData]="task" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-checkbox color="primary" disableRipple="true"
+                  [checked]="task.isDone"
+                  (change)="onDoneChange($event, task)"
+                  (click)="$event.stopPropagation()"
+                  (keydown)="$event.stopPropagation()">
+                  {{ task.title }}
+                </mat-checkbox>
+              </mat-panel-title>
+              <mat-panel-description>{{ task.category }}</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>{{ task.description }}</p>
+          </mat-expansion-panel>
+        </ng-container>
+      </mat-accordion>
+      <button mat-icon-button (click)="drawer.toggle()" color="primary" aria-label="Add a new task">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="card">
+      <h2>Backlog</h2>
+      <mat-accordion id="backlog-list" class="list" cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlogTasks" [cdkDropListConnectedTo]="[focusedList, doneList]" (cdkDropListDropped)="drop($event)">
+        <ng-container *ngFor="let task of backlogTasks | async">
+          <mat-expansion-panel cdkDrag [cdkDragData]="task" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-checkbox color="primary" disableRipple="true"
+                  [checked]="task.isDone"
+                  (change)="onDoneChange($event, task)"
+                  (click)="$event.stopPropagation()"
+                  (keydown)="$event.stopPropagation()">
+                  {{ task.title }}
+                </mat-checkbox>
+              </mat-panel-title>
+              <mat-panel-description>{{ task.category }}</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>{{ task.description }}</p>
+          </mat-expansion-panel>
+        </ng-container>
+      </mat-accordion>
+      <button mat-icon-button (click)="drawer.toggle()" color="primary" aria-label="Add a new task">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="card">
+      <h2>Done</h2>
+      <mat-accordion id="done-list" class="list" cdkDropList #doneList="cdkDropList" [cdkDropListData]="doneTasks" [cdkDropListConnectedTo]="[focusedList, backlogList]" (cdkDropListDropped)="drop($event)">
+        <ng-container *ngFor="let task of doneTasks | async">
+          <mat-expansion-panel cdkDrag [cdkDragData]="task" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-checkbox color="primary" disableRipple="true"
+                  [checked]="task.isDone"
+                  (change)="onDoneChange($event, task)"
+                  (click)="$event.stopPropagation()"
+                  (keydown)="$event.stopPropagation()">
+                  {{ task.title }}
+                </mat-checkbox>
+              </mat-panel-title>
+              <mat-panel-description>{{ task.category }}</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>{{ task.description }}</p>
+          </mat-expansion-panel>
+        </ng-container>
+      </mat-accordion>
+    </div>
   </div>
-  <div class="card">
-    <h2>Backlog</h2>
-    <mat-accordion id="backlog-list" class="list" cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlogTasks" [cdkDropListConnectedTo]="[focusedList, doneList]" (cdkDropListDropped)="drop($event)">
-      <ng-container *ngFor="let task of backlogTasks | async">
-        <mat-expansion-panel cdkDrag [cdkDragData]="task" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-checkbox color="primary" disableRipple="true"
-                [checked]="task.isDone"
-                (change)="onDoneChange($event, task)"
-                (click)="$event.stopPropagation()"
-                (keydown)="$event.stopPropagation()">
-                {{ task.title }}
-              </mat-checkbox>
-            </mat-panel-title>
-            <mat-panel-description>{{ task.category }}</mat-panel-description>
-          </mat-expansion-panel-header>
-          <p>{{ task.description }}</p>
-        </mat-expansion-panel>
-      </ng-container>
-    </mat-accordion>
-  </div>
-  <div class="card">
-    <h2>Done</h2>
-    <mat-accordion id="done-list" class="list" cdkDropList #doneList="cdkDropList" [cdkDropListData]="doneTasks" [cdkDropListConnectedTo]="[focusedList, backlogList]" (cdkDropListDropped)="drop($event)">
-      <ng-container *ngFor="let task of doneTasks | async">
-        <mat-expansion-panel cdkDrag [cdkDragData]="task" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-checkbox color="primary" disableRipple="true"
-                [checked]="task.isDone"
-                (change)="onDoneChange($event, task)"
-                (click)="$event.stopPropagation()"
-                (keydown)="$event.stopPropagation()">
-                {{ task.title }}
-              </mat-checkbox>
-            </mat-panel-title>
-            <mat-panel-description>{{ task.category }}</mat-panel-description>
-          </mat-expansion-panel-header>
-          <p>{{ task.description }}</p>
-        </mat-expansion-panel>
-      </ng-container>
-    </mat-accordion>
-  </div>
-</div>
+</mat-drawer-container>
