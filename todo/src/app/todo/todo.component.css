@@ -8,11 +8,6 @@ mat-toolbar .spacer {
   flex: 1 1 auto;
 }
 
-mat-toolbar button
-{
-  margin-right: 10px;
-}
-
 .add-task-sidenav
 {
   padding: 20px;
