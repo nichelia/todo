@@ -37,11 +37,6 @@ mat-toolbar .spacer {
   width: 100%;
 }
 
-.add-task-sidenav .add-task-form .submit-button-wrapper
-{
-  justify-content: flex-end;
-}
-
 .container
 {
   padding: 20px;

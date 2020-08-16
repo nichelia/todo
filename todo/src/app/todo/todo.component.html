@@ -32,13 +32,20 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <div class="submit-button-wrapper">
-          <button mat-stroked-button [disabled]="!addTaskForm.valid">Submit</button>
+        <div fxLayoutAlign="end center">
+          <button mat-stroked-button [disabled]="!addTaskForm.valid">Add</button>
         </div>
       </form>
     </div>
   </mat-drawer>
-  <div class="container" fxLayout="column" fxLayoutAlign="row center" fxFlexFill>
+  <div class="container" fxLayout="column" fxLayoutAlign="start center" fxFlexFill>
+    <div class="card">
+      <div fxLayout="column" fxLayoutAlign="start center">
+        <button mat-button (click)="drawer.open()" [disabled]="drawer.opened" color="primary" aria-label="Add a new task">
+          Add Task
+        </button>
+      </div>
+    </div>
     <div class="card">
       <h2>Focused</h2>
       <mat-accordion id="focused-list" class="list" cdkDropList #focusedList="cdkDropList" [cdkDropListData]="focusedTasks" [cdkDropListConnectedTo]="[backlogList, doneList]" (cdkDropListDropped)="drop($event)">
