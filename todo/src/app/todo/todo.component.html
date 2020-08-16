@@ -1,5 +1,5 @@
 <mat-drawer-container autosize>
-  <mat-drawer #drawer class="add-task-sidenav" mode="side" position="end">
+  <mat-drawer #drawer class="add-task-sidenav" mode="side" position="end" autoFocus="true">
     <mat-toolbar color="red">
       <mat-toolbar-row>
         <span>Add task</span>
@@ -11,9 +11,9 @@
     </mat-toolbar>
     <div class="card">
       <form class="add-task-form" [formGroup]="addTaskForm" (ngSubmit)="submitTask(); drawer.close();" novalidate>
-        <mat-form-field class="input-full-width" cdkFocusInitial>
+        <mat-form-field class="input-full-width">
           <mat-label>Title</mat-label>
-          <input matInput placeholder="e.g. Call Nicholas" value="" formControlName="title">
+          <input matInput placeholder="e.g. Call Nicholas" value="" formControlName="title" cdkFocusInitial>
           <mat-error *ngIf="errorHandling('title', 'required')">
             You must provide a <strong>title</strong>
           </mat-error>
