@@ -3,6 +3,7 @@ import { CdkDragDrop, CdkDragEnter, CdkDragExit } from '@angular/cdk/drag-drop';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Task } from './task';
 
 @Component({
@@ -18,9 +19,9 @@ export class TodoComponent implements OnInit {
   focusedTasks: Observable<Task[]>;
   backlogTasks: Observable<Task[]>;
   doneTasks: Observable<Task[]>;
-  showFiller = false;
+  addTaskForm: FormGroup;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, public fb: FormBuilder) { }
 
   ngOnInit(): void
   {
@@ -30,6 +31,7 @@ export class TodoComponent implements OnInit {
   private init()
   {
     this.setupDB();
+    this.setupAddTaskForm();
     // this.setupData();
   }
 
@@ -67,6 +69,16 @@ export class TodoComponent implements OnInit {
         return { id, ...data };
       }))
     );
+  }
+
+  private setupAddTaskForm()
+  {
+      this.addTaskForm = this.fb.group({
+        title: ['', [Validators.required]],
+        description: [''],
+        category: [''],
+        dueDate: [null],
+      })
   }
 
   private setupData()
@@ -137,6 +149,14 @@ export class TodoComponent implements OnInit {
     }
   }
 
+  onDateChange(event)
+  {
+    const convertDate = new Date(event.target.value).toISOString().substring(0, 10);
+    this.addTaskForm.get('dueDate').setValue(convertDate, {
+      onlyself: true
+    });
+  }
+
   drop(event: CdkDragDrop<Task[]>)
   {
     if (event.previousContainer === event.container)
@@ -159,6 +179,26 @@ export class TodoComponent implements OnInit {
         this.changeToDone(event.item.data);
       }
     }
+  }
+
+  public errorHandling = (control: string, error: string) => {
+    return this.addTaskForm.controls[control].hasError(error);
+  }
+
+  resetForm()
+  {
+    this.addTaskForm.reset();
+  }
+
+  submitTask()
+  {
+    if (!this.addTaskForm.valid)
+    {
+      return;
+    }
+    const values = this.addTaskForm.value;
+    const newTask = new Task(values);
+    this.addBacklogDocument(newTask);
   }
 
 }

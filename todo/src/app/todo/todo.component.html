@@ -1,26 +1,40 @@
 <mat-drawer-container autosize>
   <mat-drawer #drawer class="add-task-sidenav" mode="side" position="end">
+    <mat-toolbar color="red">
+      <mat-toolbar-row>
+        <span>Add task</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="drawer.close(); resetForm();" [disabled]="drawer.closed" color="accent" aria-label="Close sidenav">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
     <div class="card">
-      <h2>Add task</h2>
-      <form class="add-task-form">
-        <mat-form-field class="input-full-width">
+      <form class="add-task-form" [formGroup]="addTaskForm" (ngSubmit)="submitTask(); drawer.close();" novalidate>
+        <mat-form-field class="input-full-width" cdkFocusInitial>
           <mat-label>Title</mat-label>
-          <input matInput placeholder="e.g. Call Nicholas" value="">
+          <input matInput placeholder="e.g. Call Nicholas" value="" formControlName="title">
+          <mat-error *ngIf="errorHandling('title', 'required')">
+            You must provide a <strong>title</strong>
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="input-full-width">
           <mat-label>Description</mat-label>
-          <textarea matInput placeholder="e.g. The phone number to call is..."></textarea>
+          <textarea matInput placeholder="e.g. The phone number to call is..." formControlName="description"></textarea>
         </mat-form-field>
         <mat-form-field class="input-full-width">
           <mat-label>Category</mat-label>
-          <input matInput placeholder="e.g. Personal" value="">
+          <input matInput placeholder="e.g. Personal" value="" formControlName="category">
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Due date</mat-label>
-          <input matInput [matDatepicker]="picker">
+          <input matInput [matDatepicker]="picker" formControlName="dueDate" (dateChange)="onDateChange($event)">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+        <div class="submit-button-wrapper">
+          <button mat-stroked-button [disabled]="!addTaskForm.valid">Submit</button>
+        </div>
       </form>
     </div>
   </mat-drawer>
@@ -46,9 +60,6 @@
           </mat-expansion-panel>
         </ng-container>
       </mat-accordion>
-      <button mat-icon-button (click)="drawer.toggle()" color="primary" aria-label="Add a new task">
-        <mat-icon>add</mat-icon>
-      </button>
     </div>
     <div class="card">
       <h2>Backlog</h2>
@@ -71,7 +82,7 @@
           </mat-expansion-panel>
         </ng-container>
       </mat-accordion>
-      <button mat-icon-button (click)="drawer.toggle()" color="primary" aria-label="Add a new task">
+      <button mat-icon-button (click)="drawer.open()" [disabled]="drawer.opened" color="primary" aria-label="Add a new task">
         <mat-icon>add</mat-icon>
       </button>
     </div>

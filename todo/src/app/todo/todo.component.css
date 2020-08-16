@@ -4,6 +4,15 @@
   background-color: inherit;
 }
 
+mat-toolbar .spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar button
+{
+  margin-right: 10px;
+}
+
 .add-task-sidenav
 {
   padding: 20px;
@@ -19,18 +28,23 @@
 .add-task-sidenav .add-task-form
 {
   min-width: 150px;
-  max-width: 540px;
+  max-width: 400px;
   width: 100%;
 }
 
-.add-task-sidenav mat-form-field
+.add-task-sidenav .add-task-form mat-form-field
 {
   margin: 18px 0px;
 }
 
-.add-task-sidenav .input-full-width
+.add-task-sidenav .add-task-form .input-full-width
 {
   width: 100%;
+}
+
+.add-task-sidenav .add-task-form .submit-button-wrapper
+{
+  justify-content: flex-end;
 }
 
 .container
@@ -43,7 +57,6 @@
 {
   margin: 20px;
   width: 100%;
-  min-height: 200px;
   min-width: 400px;
   max-width: 800px;
 }
