@@ -1,0 +1,48 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+html
+{
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body
+{
+  height: 100%;
+  margin: 0;
+  color: var(--text-color-hard);
+  font-weight: 400;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+*, *:before, *:after
+{
+  box-sizing: inherit;
+}
+
+$inside-primary: mat-palette($mat-indigo);
+$inside-accent: mat-palette($mat-pink);
+$inside-warn: mat-palette($mat-red);
+$inside-theme-dark: mat-dark-theme($inside-primary, $inside-accent, $inside-warn);
+$inside-theme-light: mat-light-theme($inside-primary, $inside-accent, $inside-warn);
+
+.color-scheme-dark
+{
+  @include angular-material-theme($inside-theme-dark);
+  background-color: #2d2d2d;
+  .mat-checkbox-checked
+  {
+    color: rgba(255,255,255,0.45)
+  }
+}
+
+.color-scheme-light
+{
+  @include angular-material-theme($inside-theme-light);
+  background-color: white;
+  .mat-checkbox-checked
+  {
+    color: rgba(0,0,0,0.45)
+  }
+}

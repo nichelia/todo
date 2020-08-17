@@ -3,6 +3,16 @@
   height: 100%;
 }
 
+#dark-mode-switch
+{
+  z-index: 1;
+  position: fixed;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+}
+
+
 #source-code-link
 {
   z-index: 1;
