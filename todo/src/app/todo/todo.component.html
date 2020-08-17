@@ -10,7 +10,7 @@
       </mat-toolbar-row>
     </mat-toolbar>
     <div class="card">
-      <form class="add-task-form" [formGroup]="addTaskForm" (ngSubmit)="submitTask(); drawer.close();" novalidate>
+      <form class="add-task-form" [formGroup]="addTaskForm" (ngSubmit)="submitTask(); drawer.close(); resetForm();" novalidate>
         <mat-form-field class="input-full-width">
           <mat-label>Title</mat-label>
           <input matInput placeholder="e.g. Call Nicholas" value="" formControlName="title" cdkFocusInitial>
