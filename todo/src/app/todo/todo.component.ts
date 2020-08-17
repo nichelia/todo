@@ -137,8 +137,16 @@ export class TodoComponent implements OnInit {
     this.updateDocument(task);
   }
 
-  onDoneChange(event, task: Task)
+  private delay(ms: number)
   {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  async onDoneChange(event, task: Task)
+  {
+    const delayInMs = 500
+    await this.delay(delayInMs);
+
     if (event.checked)
     {
       this.changeToDone(task);
