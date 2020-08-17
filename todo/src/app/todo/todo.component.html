@@ -61,7 +61,13 @@
                   {{ task.title }}
                 </mat-checkbox>
               </mat-panel-title>
-              <mat-panel-description>{{ task.category }}</mat-panel-description>
+              <mat-panel-description>
+                <span>{{ task.category }}</span>
+                <button mat-icon-button aria-label="Unfocus task"
+                  (click)="$event.stopPropagation(); onFocusChange($event, task)">
+                  <mat-icon>flag</mat-icon>
+                </button>
+              </mat-panel-description>
             </mat-expansion-panel-header>
             <p>{{ task.description }}</p>
           </mat-expansion-panel>
@@ -83,7 +89,13 @@
                   {{ task.title }}
                 </mat-checkbox>
               </mat-panel-title>
-              <mat-panel-description>{{ task.category }}</mat-panel-description>
+              <mat-panel-description>
+                <span>{{ task.category }}</span>
+                <button mat-icon-button aria-label="Unfocus task"
+                  (click)="$event.stopPropagation(); onFocusChange($event, task)">
+                  <mat-icon>outlined_flag</mat-icon>
+                </button>
+              </mat-panel-description>
             </mat-expansion-panel-header>
             <p>{{ task.description }}</p>
           </mat-expansion-panel>

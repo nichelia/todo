@@ -157,6 +157,22 @@ export class TodoComponent implements OnInit {
     }
   }
 
+  async onFocusChange(event, task: Task)
+  {
+    const delayInMs = 200
+    await this.delay(delayInMs);
+
+    if (task.isFocused)
+    {
+      this.changeToBacklog(task);
+    }
+    else
+    {
+      const newIndex = 0;
+      this.changeToFocused(task, newIndex);
+    }
+  }
+
   onDateChange(event)
   {
     const convertDate = new Date(event.target.value).toISOString().substring(0, 10);
