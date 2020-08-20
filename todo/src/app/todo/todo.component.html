@@ -70,6 +70,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <p>{{ task.description }}</p>
+            <p class="mat-expansion-panel-header-description">Due: {{ task.dueDate.seconds * 1000 | date }}</p>
           </mat-expansion-panel>
         </ng-container>
       </mat-accordion>
@@ -98,6 +99,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <p>{{ task.description }}</p>
+            <p class="mat-expansion-panel-header-description">Due: {{ task.dueDate.seconds * 1000 | date }}</p>
           </mat-expansion-panel>
         </ng-container>
       </mat-accordion>
