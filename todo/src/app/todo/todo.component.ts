@@ -42,7 +42,8 @@ export class TodoComponent implements OnInit {
                 .orderBy('priority'));
     this.backlogTasksCollection = this.firestore.collection<Task>('tasks',
       ref => ref.where('isFocused', '==', false)
-                .where('isDone', '==', false));
+                .where('isDone', '==', false)
+                .orderBy('dueDate', 'desc'));
     this.doneTasksCollection = this.firestore.collection<Task>('tasks',
       ref => ref.where('isDone', '==', true)
                 .orderBy('dateCompleted', 'desc')
