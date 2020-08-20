@@ -175,8 +175,8 @@ export class TodoComponent implements OnInit {
 
   onDateChange(event)
   {
-    const convertDate = new Date(event.target.value).toISOString().substring(0, 10);
-    this.addTaskForm.get('dueDate').setValue(convertDate, {
+    const dueDate = event.target.value
+    this.addTaskForm.get('dueDate').setValue(dueDate, {
       onlyself: true
     });
   }
