@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "nichelia": {
+      "hosting": {
+        "todo": [
+          "nichelia"
+        ]
+      }
+    }
+  }
+}

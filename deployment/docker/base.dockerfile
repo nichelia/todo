@@ -22,6 +22,7 @@ RUN apk add --no-cache \
 # Install node dependencies
 COPY package*.json ${APP_DIR}
 RUN npm i -g @angular/cli@9.1.5
+RUN npm i -g firebase-tools
 RUN cd $APP_DIR && \
     npm install && \
     ng update
