@@ -43,7 +43,7 @@ export class TodoComponent implements OnInit {
     this.backlogTasksCollection = this.firestore.collection<Task>('tasks',
       ref => ref.where('isFocused', '==', false)
                 .where('isDone', '==', false)
-                .orderBy('dueDate', 'desc'));
+                .orderBy('dueDate'));
     this.doneTasksCollection = this.firestore.collection<Task>('tasks',
       ref => ref.where('isDone', '==', true)
                 .orderBy('dateCompleted', 'desc')
