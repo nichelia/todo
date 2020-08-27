@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { DarkModeComponent } from './dark-mode/dark-mode.component';
 import { HomeComponent } from './home/home.component';
+import { MenuComponent } from './menu/menu.component';
 import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TodoComponent } from './todo/todo.component';
     AuthComponent,
     DarkModeComponent,
     HomeComponent,
+    MenuComponent,
     TodoComponent,
   ],
   imports: [

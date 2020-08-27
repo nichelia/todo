@@ -1,18 +1,18 @@
-.mat-drawer-container
+.container
 {
   height: 100%;
   background-color: inherit;
-}
-
-mat-toolbar .spacer
-{
-  flex: 1 1 auto;
 }
 
 .add-task-sidenav
 {
   padding: 20px;
   min-width: 200px;
+}
+
+.add-task-sidenav mat-toolbar .spacer
+{
+  flex: 1 1 auto;
 }
 
 .add-task-sidenav .card
@@ -38,7 +38,7 @@ mat-toolbar .spacer
   width: 100%;
 }
 
-.container
+.list-container
 {
   padding: 20px;
   height: 100%;

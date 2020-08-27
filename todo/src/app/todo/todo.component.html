@@ -1,4 +1,4 @@
-<mat-drawer-container autosize>
+<mat-drawer-container class="container" autosize>
   <mat-drawer #drawer class="add-task-sidenav" mode="side" position="end" autoFocus="true">
     <mat-toolbar color="red">
       <mat-toolbar-row>
@@ -38,7 +38,7 @@
       </form>
     </div>
   </mat-drawer>
-  <div class="container" fxLayout="column" fxLayoutAlign="start center" fxFlexFill>
+  <div class="list-container" fxLayout="column" fxLayoutAlign="start center" fxFlexFill>
     <div class="card">
       <div fxLayout="column" fxLayoutAlign="start center">
         <button mat-button (click)="drawer.open()" [disabled]="drawer.opened" color="primary" aria-label="Add a new task">
