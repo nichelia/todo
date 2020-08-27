@@ -16,6 +16,13 @@ export const environment = {
   }
 };
 
+export function firebaseAppNameFactory() {
+  return environment.firebase.projectId;
+};
+
+export const unauthorisedRoute = 'auth';
+export const authorisedRoute = 'home';
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

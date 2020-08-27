@@ -9,16 +9,18 @@ import { MatModule } from "./mat.module";
 import { AfsModule } from "./afs.module";
 
 import { AppComponent } from './app.component';
+import { AuthComponent } from './auth/auth.component';
+import { DarkModeComponent } from './dark-mode/dark-mode.component';
 import { HomeComponent } from './home/home.component';
 import { TodoComponent } from './todo/todo.component';
-import { DarkModeComponent } from './dark-mode/dark-mode.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthComponent,
+    DarkModeComponent,
     HomeComponent,
     TodoComponent,
-    DarkModeComponent,
   ],
   imports: [
     BrowserModule,

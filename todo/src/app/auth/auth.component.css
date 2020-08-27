@@ -1,0 +1,9 @@
+.container
+{
+  padding: 100px;
+  height: 100%;
+}
+
+.auth-card {
+  width: 500px;
+}

@@ -11,3 +11,10 @@ export const environment = {
     measurementId: "G-S1F3T5HK4G"
   }
 };
+
+export function firebaseAppNameFactory() {
+  return environment.firebase.projectId;
+};
+
+export const unauthorisedRoute = 'auth';
+export const authorisedRoute = 'home';
