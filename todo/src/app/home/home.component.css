@@ -22,3 +22,12 @@
   top: 0;
   left: 0;
 }
+
+#user
+{
+  z-index: 1;
+  position: fixed;
+  padding: 10px;
+  top: 0;
+  right: 0;
+}
