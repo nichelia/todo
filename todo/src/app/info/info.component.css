@@ -1,0 +1,11 @@
+.content
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+}
+.content .spacer
+{
+  flex: 1 1 auto;
+}

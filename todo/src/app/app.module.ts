@@ -14,6 +14,7 @@ import { DarkModeComponent } from './dark-mode/dark-mode.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { TodoComponent } from './todo/todo.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TodoComponent } from './todo/todo.component';
     HomeComponent,
     MenuComponent,
     TodoComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,

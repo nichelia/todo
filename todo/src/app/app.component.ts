@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { VERSION } from '../environments/version';
 import { ColourSchemeService } from "./dark-mode/colour-scheme.service";
 import { unauthorisedRoute, authorisedRoute } from '../environments/environment';
 
@@ -13,7 +12,6 @@ import { unauthorisedRoute, authorisedRoute } from '../environments/environment'
 export class AppComponent implements OnInit
 {
   title = 'todo';
-  version = "v"+VERSION.version;
 
   constructor(
     public auth: AngularFireAuth,

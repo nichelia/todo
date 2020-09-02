@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 
 const matModules = [
@@ -24,6 +25,7 @@ const matModules = [
   MatIconModule,
   MatCheckboxModule,
   MatSlideToggleModule,
+  MatDividerModule,
   MatPasswordStrengthModule,
 ];
 
