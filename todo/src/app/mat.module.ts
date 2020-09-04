@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -17,6 +18,7 @@ const matModules = [
   MatSidenavModule,
   MatToolbarModule,
   MatCardModule,
+  MatListModule,
   MatExpansionModule,
   MatInputModule,
   MatDatepickerModule,

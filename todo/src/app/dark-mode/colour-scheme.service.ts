@@ -9,6 +9,7 @@ export class ColourSchemeService {
   private colorScheme: string;
   // Define prefix for more clear and readable styling classes in scss files
   private colorSchemePrefix = 'color-scheme-';
+  private localStorageId = 'prefers-color';
 
   constructor(rendererFactory: RendererFactory2) {
     // Create new renderer from renderFactory, to make it possible to use renderer2 in a service
@@ -29,14 +30,14 @@ export class ColourSchemeService {
   _setColorScheme(scheme) {
     this.colorScheme = scheme;
     // Save prefers-color-scheme to localStorage
-    localStorage.setItem('prefers-color', scheme);
+    localStorage.setItem(this.localStorageId, scheme);
   }
 
   _getColorScheme() {
     // Check if any prefers-color-scheme is stored in localStorage
-    if (localStorage.getItem('prefers-color')) {
+    if (localStorage.getItem(this.localStorageId)) {
       // Save prefers-color-scheme from localStorage
-      this.colorScheme = localStorage.getItem('prefers-color');
+      this.colorScheme = localStorage.getItem(this.localStorageId);
     } else {
       // If no prefers-color-scheme is stored in localStorage, Try to detect OS default prefers-color-scheme
       this._detectPrefersColorScheme();
@@ -52,15 +53,18 @@ export class ColourSchemeService {
     return this.colorScheme;
   }
 
+  getSystemScheme() {
+    if (localStorage.getItem(this.localStorageId)) {
+      localStorage.removeItem(this.localStorageId);
+    }
+    this.load();
+  }
+
   updateScheme(scheme) {
     this._setColorScheme(scheme);
     // Remove the old color-scheme class
     this.renderer.removeClass( document.body, this.colorSchemePrefix + (this.colorScheme === 'dark' ? 'light' : 'dark') );
     // Add the new / current color-scheme class
     this.renderer.addClass(document.body, this.colorSchemePrefix + scheme);
-  }
-
-  currentActive() {
-    return this.colorScheme;
   }
 }

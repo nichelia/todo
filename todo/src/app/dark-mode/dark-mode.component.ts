@@ -8,23 +8,48 @@ import { ColourSchemeService } from "./colour-scheme.service";
 })
 export class DarkModeComponent implements OnInit
 {
-  isDarkMode = true;
-  theme = 'dark';
+  themeOptions: string[] = ['Light', 'Dark', 'Detect (system)'];
+  selectedOption: string = 'Dark';
 
   constructor(private colorSchemeService: ColourSchemeService) { }
 
   ngOnInit(): void
   {
-    this.theme = this.colorSchemeService.getScheme();
-    this.isDarkMode = (this.theme === 'dark') ? true : false;
+    const scheme: string = this.colorSchemeService.getScheme();
+    if (scheme === "light")
+    {
+      this.selectedOption = this.themeOptions[0];
+    }
+    else if (scheme === "dark")
+    {
+      this.selectedOption = this.themeOptions[1];
+    }
+    else
+    {
+      this.selectedOption = this.themeOptions[2];
+    }
   }
 
-  onDarkModeChange()
+  private _changeTheme()
   {
-    this.isDarkMode = !this.isDarkMode;
-    this.theme = (this.isDarkMode) ? 'dark' : 'light';
+    if (this.selectedOption === "Light")
+    {
+      this.colorSchemeService.updateScheme("light");
+    }
+    else if (this.selectedOption === "Dark")
+    {
+      this.colorSchemeService.updateScheme("dark");
+    }
+    else
+    {
+      this.colorSchemeService.getSystemScheme();
+    }
+  }
 
-    this.colorSchemeService.updateScheme(this.theme);
+  onThemeChange(selected)
+  {
+    this.selectedOption = selected.option.value;
+    this._changeTheme();
   }
 
 }
