@@ -6,7 +6,6 @@
 
 .add-task-sidenav
 {
-  padding: 20px;
   min-width: 200px;
 }
 
@@ -18,7 +17,6 @@
 .add-task-sidenav .card
 {
   margin: 20px;
-  width: 100%;
 }
 
 .add-task-sidenav .add-task-form
@@ -44,7 +42,7 @@
   height: 100%;
 }
 
-.card
+.list-container .card
 {
   margin: 20px;
   width: 100%;
