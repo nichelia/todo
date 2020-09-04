@@ -10,7 +10,7 @@ import { AfsModule } from "./afs.module";
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
-import { DarkModeComponent } from './dark-mode/dark-mode.component';
+import { ThemeComponent } from './theme/theme.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { TodoComponent } from './todo/todo.component';
@@ -20,7 +20,7 @@ import { InfoComponent } from './info/info.component';
   declarations: [
     AppComponent,
     AuthComponent,
-    DarkModeComponent,
+    ThemeComponent,
     HomeComponent,
     MenuComponent,
     TodoComponent,
