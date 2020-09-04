@@ -1,15 +1,17 @@
 <mat-sidenav-container class="container" autosize>
   <mat-sidenav #sidenav class="menu-sidenav" mode="side" position="start" autoFocus="true">
-    <mat-toolbar>
-      <mat-toolbar-row>
-        <span>ToDo</span>
-        <span class="spacer"></span>
-        <button mat-icon-button (click)="sidenav.close();" [disabled]="!sidenav.opened" color="warn" aria-label="Close sidenav">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-toolbar-row>
-    </mat-toolbar>
-    <app-menu></app-menu>
+    <div fxLayout="column" fxFill>
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span>ToDo</span>
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="sidenav.close();" [disabled]="!sidenav.opened" color="warn" aria-label="Close sidenav">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <app-menu fxFlex fxLayout="column"></app-menu>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-todo></app-todo>
