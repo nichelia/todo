@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ColourSchemeService } from "./colour-scheme.service";
 
 @Component({
-  selector: 'app-dark-mode',
-  templateUrl: './dark-mode.component.html',
-  styleUrls: ['./dark-mode.component.css']
+  selector: 'app-theme',
+  templateUrl: './theme.component.html',
+  styleUrls: ['./theme.component.css']
 })
-export class DarkModeComponent implements OnInit
+export class ThemeComponent implements OnInit
 {
   themeOptions: string[] = ['Light', 'Dark', 'Detect (system)'];
   selectedOption: string = 'Dark';
