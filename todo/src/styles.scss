@@ -21,28 +21,29 @@ body
   box-sizing: inherit;
 }
 
-$inside-primary: mat-palette($mat-indigo);
-$inside-accent: mat-palette($mat-pink);
-$inside-warn: mat-palette($mat-red);
-$inside-theme-dark: mat-dark-theme($inside-primary, $inside-accent, $inside-warn);
-$inside-theme-light: mat-light-theme($inside-primary, $inside-accent, $inside-warn);
+$theme-primary: mat-palette($mat-indigo);
+$theme-accent: mat-palette($mat-pink);
+$theme-warn: mat-palette($mat-red);
+
+$theme-primary-dark: mat-palette($mat-indigo, 300);
+$theme-accent-dark: mat-palette($mat-pink, 300);
+$theme-warn-dark: mat-palette($mat-red, 300);
+
+$light-theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+$dark-theme: mat-dark-theme($theme-primary-dark, $theme-accent-dark, $theme-warn-dark);
 
 .color-scheme-dark
 {
-  @include angular-material-theme($inside-theme-dark);
-  background-color: #2d2d2d;
-  .mat-checkbox-checked
+  @include angular-material-theme($dark-theme);
+  background-color: #121212;
+  .mat-expansion-panel
   {
-    color: rgba(255,255,255,0.45)
+    background: none;
   }
 }
 
 .color-scheme-light
 {
-  @include angular-material-theme($inside-theme-light);
+  @include angular-material-theme($light-theme);
   background-color: white;
-  .mat-checkbox-checked
-  {
-    color: rgba(0,0,0,0.45)
-  }
 }
