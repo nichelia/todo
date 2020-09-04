@@ -114,7 +114,7 @@
           <mat-expansion-panel cdkDrag [cdkDragData]="task" hideToggle>
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <mat-checkbox color="primary" disableRipple="true"
+                <mat-checkbox color="primary" disableRipple="true" disabled="true"
                   [checked]="task.isDone"
                   (change)="onDoneChange($event, task)"
                   (click)="$event.stopPropagation()"
