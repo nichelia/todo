@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, CdkDragEnter, CdkDragExit } from '@angular/cdk/drag-drop';
+import { Platform } from '@angular/cdk/platform';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
@@ -21,7 +22,9 @@ export class TodoComponent implements OnInit {
   doneTasks: Observable<Task[]>;
   addTaskForm: FormGroup;
 
-  constructor(private firestore: AngularFirestore, public fb: FormBuilder) { }
+  constructor(
+    public platform: Platform,
+    private firestore: AngularFirestore, public fb: FormBuilder) { }
 
   ngOnInit(): void
   {

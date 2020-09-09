@@ -48,7 +48,7 @@
     </div>
     <div class="card">
       <h2>Focused</h2>
-      <mat-accordion id="focused-list" class="list" cdkDropList #focusedList="cdkDropList" [cdkDropListData]="focusedTasks" [cdkDropListConnectedTo]="[backlogList, doneList]" (cdkDropListDropped)="drop($event)">
+      <mat-accordion id="focused-list" class="list" cdkDropList #focusedList="cdkDropList" [cdkDropListData]="focusedTasks" [cdkDropListConnectedTo]="[backlogList, doneList]" (cdkDropListDropped)="drop($event)" [cdkDropListDisabled]="platform.ANDROID || platform.IOS">
         <ng-container *ngFor="let task of focusedTasks | async">
           <mat-expansion-panel cdkDrag [cdkDragData]="task" hideToggle>
             <mat-expansion-panel-header>
@@ -77,7 +77,7 @@
     </div>
     <div class="card">
       <h2>Backlog</h2>
-      <mat-accordion id="backlog-list" class="list" cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlogTasks" [cdkDropListConnectedTo]="[focusedList, doneList]" (cdkDropListDropped)="drop($event)">
+      <mat-accordion id="backlog-list" class="list" cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlogTasks" [cdkDropListConnectedTo]="[focusedList, doneList]" (cdkDropListDropped)="drop($event)" [cdkDropListDisabled]="platform.ANDROID || platform.IOS">
         <ng-container *ngFor="let task of backlogTasks | async">
           <mat-expansion-panel cdkDrag [cdkDragData]="task" hideToggle>
             <mat-expansion-panel-header>
@@ -109,7 +109,7 @@
     </div>
     <div class="card">
       <h2>Done</h2>
-      <mat-accordion id="done-list" class="list" cdkDropList #doneList="cdkDropList" [cdkDropListData]="doneTasks" [cdkDropListConnectedTo]="[focusedList, backlogList]" (cdkDropListDropped)="drop($event)">
+      <mat-accordion id="done-list" class="list" cdkDropList #doneList="cdkDropList" [cdkDropListData]="doneTasks" [cdkDropListConnectedTo]="[focusedList, backlogList]" (cdkDropListDropped)="drop($event)" [cdkDropListDisabled]="platform.ANDROID || platform.IOS">
         <ng-container *ngFor="let task of doneTasks | async">
           <mat-expansion-panel cdkDrag [cdkDragData]="task" hideToggle>
             <mat-expansion-panel-header>

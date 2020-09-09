@@ -13,6 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
+import { PlatformModule } from '@angular/cdk/platform';
 
 const matModules = [
   MatSidenavModule,
@@ -29,6 +30,7 @@ const matModules = [
   MatSlideToggleModule,
   MatDividerModule,
   MatPasswordStrengthModule,
+  PlatformModule,
 ];
 
 @NgModule({
