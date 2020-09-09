@@ -1,0 +1,15 @@
+.banner
+{
+  background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+}
+.banner h1
+{
+  font: 1000 350px/380px Roboto, "Helvetica Neue", sans-serif;
+  color: white;
+}
+
+.info
+{
+  min-height: 300px;
+  padding: 30px;
+}

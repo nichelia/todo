@@ -1,0 +1,17 @@
+.banner h1
+{
+  font: 1000 350px/380px Roboto, "Helvetica Neue", sans-serif;
+  background: url('../../assets/images/graham-holtshausen-fUnfEz3VLv4-unsplash-2.jpg') no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: cover;
+  background-position: center;
+}
+
+.info
+{
+  min-height: 300px;
+  padding: 30px;
+  color: white;
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+}

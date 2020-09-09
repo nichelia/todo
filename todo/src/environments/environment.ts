@@ -20,7 +20,8 @@ export function firebaseAppNameFactory() {
   return environment.firebase.projectId;
 };
 
-export const unauthorisedRoute = 'auth';
+export const authRoute = 'auth';
+export const unauthorisedRoute = '403';
 export const authorisedRoute = 'home';
 
 /*

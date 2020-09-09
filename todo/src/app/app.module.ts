@@ -15,6 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { TodoComponent } from './todo/todo.component';
 import { InfoComponent } from './info/info.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NotAuthorisedComponent } from './not-authorised/not-authorised.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { InfoComponent } from './info/info.component';
     MenuComponent,
     TodoComponent,
     InfoComponent,
+    NotFoundComponent,
+    NotAuthorisedComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

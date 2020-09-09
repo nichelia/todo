@@ -1,12 +1,15 @@
 <div class="container" fxLayout="column" fxLayoutAlign="start center" fxFlexFill>
-  <mat-card class="auth-card">
+  <div class="auth-card">
     <mat-toolbar>
       <span>Authentication</span>
     </mat-toolbar>
-    <ngx-auth-firebaseui-providers
-    layout="column"
-    [theme]="themes.CLASSIC"
-    [providers]="[ providers.Google]">
-    </ngx-auth-firebaseui-providers>
-  </mat-card>
+    <mat-card>
+      <h2>Providers</h2>
+      <ngx-auth-firebaseui-providers
+      layout="column"
+      [theme]="themes.CLASSIC"
+      [providers]="[ providers.Google]">
+      </ngx-auth-firebaseui-providers>
+    </mat-card>
+  </div>
 </div>

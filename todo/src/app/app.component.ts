@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ColourSchemeService } from "./theme/colour-scheme.service";
-import { unauthorisedRoute, authorisedRoute } from '../environments/environment';
+import { authRoute, unauthorisedRoute, authorisedRoute } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -24,13 +24,19 @@ export class AppComponent implements OnInit
   ngOnInit(): void
   {
     this.auth.authState.subscribe(user => {
+      if (!this.router.url.startsWith("/"+authRoute) &&
+          !this.router.url.startsWith("/"+authorisedRoute))
+      {
+        return;
+      }
+
       if (user)
       {
         this.router.navigate([authorisedRoute]);
       }
       else
       {
-        this.router.navigate([unauthorisedRoute]);
+        this.router.navigate([authRoute]);
       }
     });
   }
